@@ -1,10 +1,10 @@
 import { Provider } from 'react-redux';
 import { store } from '@/app/store';
-import { AuthProvider } from './app/providers/AuthProvider';
-import { AuthPage } from './pages/AuthPage';
+import { AuthProvider } from '@/app/providers/AuthProvider';
+import { ProtectedRoute } from '@/app/providers/ProtectedRoute';
+import { AuthPage } from '@/pages/AuthPage';
+import { BoardPage } from '@/pages/BoardPage';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { BoardPage } from './pages/BoardPage';
-import { ProtectedRoute } from './app/providers/ProtectedRoute';
 
 function App() {
   return (

@@ -1,4 +1,4 @@
-import { useAppSelector } from '@/app/store';
+import { useAuth } from '@/features/auth';
 import { supabase } from '@/shared/api/supabase';
 import { Button, Input, Spinner, Tabs } from '@heroui/react';
 import type { AuthError } from '@supabase/supabase-js';
@@ -14,7 +14,7 @@ export const AuthPage = () => {
   const [error, setError] = useState<AuthError | null>(null);
   const [selectedTab, setSelectedTab] = useState<SelectedTab>('login');
 
-  const { user } = useAppSelector((state) => state.auth);
+  const { user } = useAuth();
   if (user) {
     return <Navigate to="/board" replace />;
   }

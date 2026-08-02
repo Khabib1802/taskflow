@@ -1,4 +1,4 @@
-import { useAuth } from '@/features/auth/hooks/useAuth';
+import { useAuth } from '@/features/auth';
 import { Spinner } from '@heroui/react';
 import type { PropsWithChildren } from 'react';
 

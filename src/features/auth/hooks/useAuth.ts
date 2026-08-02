@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '@/app/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsAuthLoading, selectUser } from '../model/selectors';
 import { setUser } from '../model/authSlice';
 import { supabase } from '@/shared/api/supabase';
 
 export const useAuth = () => {
-  const dispatch = useAppDispatch();
-  const { user, isLoading } = useAppSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  const isLoading = useSelector(selectIsAuthLoading);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {

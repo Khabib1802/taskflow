@@ -1,5 +1,5 @@
 import { Button } from '@heroui/react';
-import { useAuth } from '@/features/auth/hooks/useAuth';
+import { useAuth } from '@/features/auth';
 
 export const BoardPage = () => {
   const { user, signOut } = useAuth();
