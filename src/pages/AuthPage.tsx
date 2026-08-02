@@ -1,7 +1,9 @@
+import { useAppSelector } from '@/app/store';
 import { supabase } from '@/shared/api/supabase';
 import { Button, Input, Spinner, Tabs } from '@heroui/react';
 import type { AuthError } from '@supabase/supabase-js';
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
 type SelectedTab = 'login' | 'register';
 
@@ -11,6 +13,11 @@ export const AuthPage = () => {
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState<AuthError | null>(null);
   const [selectedTab, setSelectedTab] = useState<SelectedTab>('login');
+
+  const { user } = useAppSelector((state) => state.auth);
+  if (user) {
+    return <Navigate to="/board" replace />;
+  }
 
   const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
